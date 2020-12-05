@@ -1,0 +1,23 @@
+<main class="row m-0 min-vh-100">
+  <div class="p-0 w-100">
+    <nav class="navbar navbar-expand navbar-dark bg-dark m-0 p-0">
+      <a class="navbar-brand btn wbdv-close bg-dark"
+         [routerLink]="['/table/courses']">
+        X
+      </a>
+      <div class="d-none d-md-block">
+        <h2 class="text-white wbdv-label wbdv-course-title">
+          Course: {{courseTitle}}</h2>
+      </div>
+    </nav>
+    <div class="row min-vh-100 m-0">
+      <div
+        class="col-lg-3 col-md-4 col-sm-5" style="background-color: seashell">
+        <app-module-list></app-module-list>
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-7" style="background-color: seashell">
+        <app-lesson-tabs></app-lesson-tabs>
+      </div>
+    </div>
+  </div>
+</main>
