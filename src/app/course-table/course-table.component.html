@@ -1,0 +1,14 @@
+<h2 class="script text-center"><span routerLink="">Course Manager</span></h2>
+<h5 class="text-center"> Total Number of Courses: {{courses.length}}</h5>
+<div class="container">
+  <ul class="list-group">
+    <li *ngFor="let course of courses"
+        class="list-group-item" style="background-color: seashell">
+      <a class="btn col-10 wbdv-class-title text-left" [routerLink]="['/table/courses',course._id,'modules']">
+        Course: {{course.title}}
+      </a>
+      <a class="btn col-2"
+         routerLink="/courses/{{course._id}}/quizzes">Quizzes</a>
+    </li>
+  </ul>
+</div>
