@@ -1,0 +1,10 @@
+<ul class="nav nav-pills nav-fill p-3 wbdv-module-list">
+  <li *ngFor="let module of modules"
+      [ngClass]="{'active': module._id === moduleId}"
+      class="nav-item nav-link m-2 d-flex w-100 wbdv-bg wbdv-module-item">
+    <a class="col-10 wbdv-module-item-title text-left wbdv-module-item-title" style="color: black"
+       [routerLink]="['/table/courses',courseId,'modules',module._id,'lessons']">
+      {{module.title}}
+    </a>
+  </li>
+</ul>
