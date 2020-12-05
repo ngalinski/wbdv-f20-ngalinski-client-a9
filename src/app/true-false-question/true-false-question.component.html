@@ -1,0 +1,53 @@
+<div class="m-3">
+  <div class="row">
+    <h4 class="col-11">
+      {{question.question}}
+    </h4>
+    <div [hidden]="!grading" class="col-1">
+      <fa-icon [hidden]="!isRightAnswer" [icon]="faCheck" size="2x"
+               class="text-success m-1 float-right"></fa-icon>
+      <fa-icon [hidden]="isRightAnswer" [icon]="faTimes" size="2x"
+               class="text-danger m-1 float-right"></fa-icon>
+    </div>
+  </div>
+
+  <ul class="list-group">
+    <li class="list-group-item
+    {{grading && 'false' === answer && 'true' === question.correct? 'list-group-item-success': ''}}
+    {{grading && 'true' === answer && 'true' !== question.correct? 'list-group-item-danger': ''}}
+    {{grading && 'true' === answer && 'true' === question.correct? 'list-group-item-success': ''}}">
+      <label>
+        <input (change)="submitAnswer()" [(ngModel)]="answer" type="radio" value="true" name="{{question._id}}"
+               [disabled]="grading" id="{{question._id}}-{{1}}">
+        True
+      </label>
+      <span class="float-right" [hidden]="!grading">
+        <fa-icon [hidden]="'true' === question.correct || answer === 'false'" [icon]="faTimes" size="lg"
+                 class="text-danger m-1 float-right"></fa-icon>
+        <fa-icon [hidden]="'false' === question.correct" [icon]="faCheck" size="lg"
+                 class="text-success m-1 float-right"></fa-icon>
+      </span>
+    </li>
+    <li class="list-group-item
+    {{grading && 'false' === answer && 'true' === question.correct? 'list-group-item-danger': ''}}
+    {{grading && 'true' === answer && 'true' !== question.correct? 'list-group-item-success': ''}}
+    {{grading && 'false' === answer && 'false' === question.correct? 'list-group-item-success': ''}}">
+      <label>
+        <input (change)="submitAnswer()" [(ngModel)]="answer" type="radio" value="false" name="{{question._id}}"
+               [disabled]="grading" id="{{question._id}}-{{2}}">
+        False
+      </label>
+      <span class="float-right" [hidden]="!grading">
+        <fa-icon [hidden]="'false' === question.correct || answer === 'true'"  [icon]="faTimes" size="lg"
+                 class="text-danger m-1 float-right"></fa-icon>
+        <fa-icon [hidden]="'true' === question.correct"  [icon]="faCheck" size="lg"
+                 class="text-success m-1 float-right"></fa-icon>
+      </span>
+    </li>
+  </ul>
+  <br>
+  <div>
+    Your Answer: <span class="text-capitalize">{{answer}}</span>
+  </div>
+  <br>
+</div>
