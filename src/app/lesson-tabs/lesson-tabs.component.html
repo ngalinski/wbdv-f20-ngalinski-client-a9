@@ -1,0 +1,10 @@
+<ul class="nav nav-pills wbdv-lesson-pill-list w-100 justify-content-end">
+  <li *ngFor="let lesson of lessons"
+      [ngClass]="{'btn-primary': lesson._id === lessonId, 'wbdv-bg' :  lesson._id !== lessonId}"
+      class="nav-item m-2 btn">
+    <a class="nav-link ml-1 wbdv-lesson-tabs col-8" style="color: black"
+       [routerLink]="['/table/courses',courseId,'modules',moduleId,'lessons', lesson._id, 'topics']">
+      {{lesson.title}}
+    </a>
+  </li>
+</ul>
