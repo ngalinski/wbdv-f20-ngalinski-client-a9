@@ -1,0 +1,20 @@
+<h2 class="text-center">Quiz: {{quizId}}</h2>
+<ul class="list-group">
+  <li *ngFor="let question of questions" class="list-group-item">
+    <div [ngSwitch]="question.type">
+      <app-true-false-question
+        *ngSwitchCase="'TRUE_FALSE'"
+        [(answer)]="question.answer"
+        [question]="question">
+      </app-true-false-question>
+      <app-multiple-choice-question
+        *ngSwitchCase="'MULTIPLE_CHOICE'"
+        [(answer)]="question.answer"
+        [question]="question">
+      </app-multiple-choice-question>
+    </div>
+  </li>
+</ul>
+<button (click)="submitQuiz()">
+  Submit Quiz
+</button>
