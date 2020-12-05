@@ -1,0 +1,37 @@
+<div class="m-3">
+  <div class="row">
+    <h4 class="col-11">
+      {{question.question}}
+    </h4>
+    <div [hidden]="!grading" class="col-1">
+      <fa-icon [hidden]="!isRightAnswer" [icon]="faCheck" size="2x"
+               class="text-success m-1 float-right"></fa-icon>
+      <fa-icon [hidden]="isRightAnswer" [icon]="faTimes" size="2x"
+               class="text-danger m-1 float-right"></fa-icon>
+    </div>
+  </div>
+
+  <ul class="list-group">
+    <li class="list-group-item
+    {{grading && choice === answer && choice !== question.correct? 'list-group-item-danger': ''}}
+    {{grading && choice === question.correct? 'list-group-item-success': ''}}"
+        *ngFor="let choice of question.choices; index as i">
+      <label>
+        <input (change)="submitAnswer()" [(ngModel)]="answer" type="radio" value="{{choice}}" name="{{question._id}}"
+               [disabled]="grading" id="{{question._id}}-{{i}}">
+        {{choice}}
+      </label>
+      <span class="float-right" [hidden]="!grading">
+        <fa-icon [hidden]="choice === question.correct || choice !== answer" [icon]="faTimes" size="lg"
+                 class="text-danger m-1 float-right"></fa-icon>
+        <fa-icon [hidden]="choice !== question.correct" [icon]="faCheck" size="lg"
+                 class="text-success m-1 float-right"></fa-icon>
+      </span>
+    </li>
+  </ul>
+  <br>
+  <div>
+    Your Answer: {{answer}}
+  </div>
+  <br>
+</div>
